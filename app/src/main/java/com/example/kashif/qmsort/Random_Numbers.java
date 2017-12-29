@@ -1,5 +1,6 @@
 package com.example.kashif.qmsort;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -21,10 +22,11 @@ import java.util.Random;
 public class Random_Numbers extends android.support.v4.app.Fragment {
 
     EditText editFrom , editTo , editRange;
-    Button btnGenerate;
+    Button btnGenerate, btnSort;
     ListView listView;
     ArrayList arrayList;
-
+  public static   int arr[];
+public static int loop;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +41,7 @@ public class Random_Numbers extends android.support.v4.app.Fragment {
         editTo = (EditText)view.findViewById(R.id.ToRandom);
         editRange = (EditText)view.findViewById(R.id.howMany);
         arrayList = new ArrayList();
-
+        btnSort  = (Button)view.findViewById(R.id.Sort);
         btnGenerate = (Button)view.findViewById(R.id.BtnGenerate);
         listView  = (ListView)view.findViewById(R.id.ListofRandom);
 
@@ -52,7 +54,9 @@ public class Random_Numbers extends android.support.v4.app.Fragment {
 
                 int max = Integer.parseInt(editTo.getText().toString());
                 int min = Integer.parseInt(editFrom.getText().toString());
-                int loop = Integer.parseInt(editRange.getText().toString());
+                 loop = Integer.parseInt(editRange.getText().toString());
+
+                arr = new int[loop];
 
                 for (int i = 0; i<loop; i++){
 
@@ -62,18 +66,34 @@ public class Random_Numbers extends android.support.v4.app.Fragment {
                     int High =  max;
                     int Result = r.nextInt(High-Low) + Low;
 
-                arrayList.add(Result);
 
+
+                    arr[i] = Result;
+
+                    arrayList.add(arr[i]);
                     ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_list_item_1, arrayList);
 
-
-
+//
+//
                     listView.setAdapter(adapter);
-
+//
 
 
                 }
+
+            }
+        });
+
+        btnSort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity() , QSActivity.class);
+                startActivity(intent);
+
+
+
 
             }
         });
