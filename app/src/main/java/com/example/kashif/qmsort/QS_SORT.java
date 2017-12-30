@@ -14,6 +14,8 @@ public class QS_SORT extends android.support.v4.app.Fragment {
 
     int arr[];
 
+
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +47,7 @@ public class QS_SORT extends android.support.v4.app.Fragment {
     }
 
 
-    int partition(int arr[], int low, int high)
+    public int partition(int arr[], int low, int high)
     {
         int pivot = arr[high];
         int i = (low-1); // index of smaller element
@@ -72,7 +74,7 @@ public class QS_SORT extends android.support.v4.app.Fragment {
         return i+1;
     }
 
-
+//    Thread t = new Thread(sort(arr,0,1));
     /* The main function that implements QuickSort()
       arr[] --> Array to be sorted,
       low  --> Starting index,
@@ -101,4 +103,8 @@ public class QS_SORT extends android.support.v4.app.Fragment {
         System.out.println();
     }
 
+
+
 }
+
+

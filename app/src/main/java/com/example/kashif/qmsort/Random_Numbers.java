@@ -89,11 +89,11 @@ public static int loop;
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getActivity() , QSActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getActivity() , QSActivity.class);
+//                startActivity(intent);
 
 
-
+             getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content , new MS_SORT()).commit();
 
             }
         });

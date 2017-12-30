@@ -13,12 +13,14 @@ import java.util.ArrayList;
 
 public class QSActivity extends AppCompatActivity {
 
-    int arr[] , n;
+    int arr[], n;
     int counter = 0;
     ListView sortd;
-    Button NEXXT;
+    Button NEXXT, END;
+   public static Boolean endPress = false;
     ArrayList arrayList;
-    int glob = 0;
+    public static int glob = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +29,10 @@ public class QSActivity extends AppCompatActivity {
 
         sortd = (ListView) findViewById(R.id.sortd);
         NEXXT = (Button) findViewById(R.id.NEXXT);
+        END = (Button) findViewById(R.id.END);
 
         arrayList = new ArrayList();
-        n  = Random_Numbers.loop;
+        n = Random_Numbers.loop;
         arr = new int[Random_Numbers.loop];
         for (int i = 0; i < Random_Numbers.loop; i++) {
 
@@ -38,19 +41,30 @@ public class QSActivity extends AppCompatActivity {
 
         }
 
+        Thread t = new Thread(new sort(arr,0,arr.length - 1));
+        t.start();
+
+        END.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+             endPress = true;
+            printArray(arr);
+            }
+        });
 
         NEXXT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                endPress=false;
+                printArray(arr);
                 glob = 1;
-                sort(arr , 0 , n-1);
+//                sort(arr, 0, n - 1);
 
             }
         });
-
-
-
 
 
     }
@@ -81,13 +95,13 @@ public class QSActivity extends AppCompatActivity {
         printArray(arr);
 
 
-       glob = 0;
+        glob = 0;
 
-            return i + 1;
-
+        return i + 1;
 
 
     }
+
 
 
     void sort(int arr[], int low, int high) {
@@ -112,10 +126,13 @@ public class QSActivity extends AppCompatActivity {
      void printArray(int arr[])
     {
         int n = arr.length;
+
+        arrayList.clear();
         for (int i=0; i < n; ++i) {
             //
 //             System.out.print(arr[i]+" ");
 //            System.out.println();
+
 
             arrayList.add(arr[i]);
 
@@ -134,3 +151,4 @@ public class QSActivity extends AppCompatActivity {
 
 
 }
+

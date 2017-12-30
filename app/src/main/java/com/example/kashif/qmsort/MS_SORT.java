@@ -5,7 +5,12 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 /**
  * Created by Kashif on 12/29/2017.
@@ -14,6 +19,13 @@ import android.widget.Toast;
 public class MS_SORT extends android.support.v4.app.Fragment {
 
     int arr[];
+    ArrayList arrayList;
+    ListView listView;
+
+    public static int counter = 0;
+
+    Button Next;
+    public static int glob = 0;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,8 +49,24 @@ public class MS_SORT extends android.support.v4.app.Fragment {
 
         View view = inflater.inflate(R.layout.mslayout , null);
 
-        sort(arr, 0, arr.length-1);
-        printArray(arr);
+        Next = (Button)view.findViewById(R.id.NEXXT);
+        listView = (ListView)view.findViewById(R.id.sortd);
+        arrayList = new ArrayList();
+
+
+        Thread t = new Thread(new sort2(arr,0,arr.length - 1));
+        t.start();
+       // printArray(arr);
+
+        Next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                printArray(arr);
+                glob = 1;
+            }
+        });
 
 
         return view;
@@ -98,6 +126,10 @@ public class MS_SORT extends android.support.v4.app.Fragment {
             j++;
             k++;
         }
+        while (MS_SORT.glob == 0){
+
+
+        }
     }
 
 
@@ -123,14 +155,24 @@ public class MS_SORT extends android.support.v4.app.Fragment {
      void printArray(int arr[])
     {
         int n = arr.length;
+
+        arrayList.clear();
         for (int i=0; i<n; ++i){
 
-            Toast.makeText(getActivity() , " " + arr[i] , Toast.LENGTH_SHORT).show();
 
+            arrayList.add(arr[i]);
 
         }
+
+        ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_list_item_1, arrayList);
+
+        listView.setAdapter(adapter);
+
 //            System.out.print(arr[i] + " ");
 //        System.out.println();
+
+        Toast.makeText(getActivity() , " counter " + counter , Toast.LENGTH_SHORT).show();
     }
 
 }

@@ -18,6 +18,7 @@ public class Transport_Message_Activity extends AppCompatActivity {
     public ArrayList<Fragment> arrayList;
     public QS_SORT qsSort;
     public MS_SORT ms_sort;
+    public  QSActivity qsActivity;
 
 
 
@@ -41,7 +42,7 @@ public class Transport_Message_Activity extends AppCompatActivity {
         arrayList = new ArrayList<>();
         qsSort = new QS_SORT();
         ms_sort = new MS_SORT();
-
+        qsActivity = new QSActivity();
 
         arrayList.add(qsSort);
         arrayList.add(ms_sort);
