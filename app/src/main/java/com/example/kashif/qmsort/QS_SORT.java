@@ -5,6 +5,9 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import java.util.ArrayList;
 
 /**
  * Created by Kashif on 12/29/2017.
@@ -13,6 +16,10 @@ import android.view.ViewGroup;
 public class QS_SORT extends android.support.v4.app.Fragment {
 
     int arr[];
+    Button NEXXT, END;
+    public static Boolean endPress = false;
+    public static int glob = 0;
+
 
 
 
@@ -37,10 +44,35 @@ public class QS_SORT extends android.support.v4.app.Fragment {
 
 
         View view = inflater.inflate(R.layout.qslayout , null);
+        NEXXT = (Button)view.findViewById(R.id.NEXXT);
+        END = (Button)view.findViewById(R.id.END);
 
 
-        sort(arr, 0, arr.length-1);
+        Thread t = new Thread(new sort(arr,0,arr.length - 1));
+        t.start();
 
+
+        END.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                endPress = true;
+                printArray(arr);
+            }
+        });
+
+        NEXXT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                endPress=false;
+                printArray(arr);
+                glob = 1;
+//                sort(arr, 0, n - 1);
+
+            }
+        });
 
         return view;
 

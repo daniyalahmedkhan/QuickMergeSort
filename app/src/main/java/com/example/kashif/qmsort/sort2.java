@@ -32,6 +32,9 @@ public class sort2 implements Runnable {
             int m = (l+r)/2;
 
             // Sort first and second halves
+            MS_SORT.glob = 0;
+
+
             sort(arr, l, m);
             sort(arr , m+1, r);
 
