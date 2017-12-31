@@ -14,11 +14,12 @@ import java.util.ArrayList;
 public class QSActivity extends AppCompatActivity {
 
     int arr[], n;
-    int counter = 0;
+   public static int counter = 0;
     ListView sortd;
     Button NEXXT, END;
    public static Boolean endPress = false;
     ArrayList arrayList;
+
     public static int glob = 0;
 
 
@@ -145,7 +146,7 @@ public class QSActivity extends AppCompatActivity {
         sortd.setAdapter(adapter);
 
 
-        // Toast.makeText(QSActivity.this , "Key Comparison" + counter , Toast.LENGTH_SHORT).show();
+         Toast.makeText(QSActivity.this , "Key Comparison" + counter , Toast.LENGTH_SHORT).show();
 
     }
 

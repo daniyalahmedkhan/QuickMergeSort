@@ -1,11 +1,15 @@
 package com.example.kashif.qmsort;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -13,6 +17,7 @@ import java.util.ArrayList;
 public class Transport_Message_Activity extends AppCompatActivity {
 
     ImageView imageView;
+    TextView CheckEff;
     public ViewPager viewPager;
     public TabLayout tabLayout;
     public ArrayList<Fragment> arrayList;
@@ -29,6 +34,20 @@ public class Transport_Message_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab_);
+        CheckEff = (TextView) findViewById(R.id.CheckEff);
+
+        CheckEff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Intent intent = new Intent(Transport_Message_Activity.this , CheckEff.class);
+                startActivity(intent);
+//                Toast.makeText(Transport_Message_Activity.this , "Quick Eff: " + QS_SORT.counter , Toast.LENGTH_SHORT ).show();
+//                Toast.makeText(Transport_Message_Activity.this , "Merge Eff: " + MS_SORT.counter , Toast.LENGTH_SHORT ).show();
+
+            }
+        });
 
 
                 initView();

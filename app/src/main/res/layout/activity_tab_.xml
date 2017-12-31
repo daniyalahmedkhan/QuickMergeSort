@@ -20,9 +20,24 @@
             android:textColor="#fff"
             android:layout_marginTop="40dp"
             android:layout_centerHorizontal="true"
-            android:text="SORTING by DIVIDE CONQUER"
+            android:text="Data Sorting"
+            android:textStyle="bold"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:padding="10dp"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:id="@+id/CheckEff"
+            android:layout_alignParentRight="true"
+            android:text="Check Efficiency"
+            />
 
         <ImageView
             android:id="@+id/back_home"

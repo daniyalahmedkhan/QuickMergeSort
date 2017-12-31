@@ -21,10 +21,10 @@ public class MS_SORT extends android.support.v4.app.Fragment {
     int arr[];
     ArrayList arrayList;
     ListView listView;
-
+    public static Boolean endPress = false;
     public static int counter = 0;
 
-    Button Next;
+    Button Next, END;
     public static int glob = 0;
 
     @Override
@@ -50,6 +50,7 @@ public class MS_SORT extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.mslayout , null);
 
         Next = (Button)view.findViewById(R.id.NEXXT);
+        END = (Button)view.findViewById(R.id.END);
         listView = (ListView)view.findViewById(R.id.sortd);
         arrayList = new ArrayList();
 
@@ -58,11 +59,23 @@ public class MS_SORT extends android.support.v4.app.Fragment {
         t.start();
        // printArray(arr);
 
+
+        END.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                endPress = true;
+                printArray(arr);
+
+
+            }
+        });
+
         Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-
+                endPress = false;
                 printArray(arr);
                 glob = 1;
             }
@@ -172,7 +185,7 @@ public class MS_SORT extends android.support.v4.app.Fragment {
 //            System.out.print(arr[i] + " ");
 //        System.out.println();
 
-        Toast.makeText(getActivity() , " counter " + counter , Toast.LENGTH_SHORT).show();
-    }
+//        Toast.makeText(getActivity() , " counter " + counter , Toast.LENGTH_SHORT).show();
+   }
 
 }

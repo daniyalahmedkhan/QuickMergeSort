@@ -52,35 +52,55 @@ public static int loop;
             public void onClick(View view) {
 
 
-                int max = Integer.parseInt(editTo.getText().toString());
-                int min = Integer.parseInt(editFrom.getText().toString());
-                 loop = Integer.parseInt(editRange.getText().toString());
 
-                arr = new int[loop];
-
-                for (int i = 0; i<loop; i++){
-
-
-                    Random r = new Random();
-                    int Low =  min;
-                    int High =  max;
-                    int Result = r.nextInt(High-Low) + Low;
+                 if ((editFrom.getText().toString().isEmpty()) || (editTo.getText().toString().isEmpty()) || (editRange.getText().toString().isEmpty())){
 
 
 
-                    arr[i] = Result;
+//                     Toast.makeText(getActivity() , "Please Enter Numbers" , Toast.LENGTH_SHORT).show();
 
-                    arrayList.add(arr[i]);
-                    ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(),
-                            android.R.layout.simple_list_item_1, arrayList);
+                     editFrom.setError("Enter fields");
+
+
+                 }else {
+
+
+
+                     int max = Integer.parseInt(editTo.getText().toString());
+                     int min = Integer.parseInt(editFrom.getText().toString());
+                     loop = Integer.parseInt(editRange.getText().toString());
+
+
+                     arr = new int[loop];
+
+                     for (int i = 0; i<loop; i++){
+
+
+                         Random r = new Random();
+                         int Low =  min;
+                         int High =  max;
+                         int Result = r.nextInt(High-Low) + Low;
+
+
+
+                         arr[i] = Result;
+
+                         arrayList.add(arr[i]);
+                         ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(),
+                                 android.R.layout.simple_list_item_1, arrayList);
 
 //
 //
-                    listView.setAdapter(adapter);
+                         listView.setAdapter(adapter);
 //
 
 
-                }
+                     }
+
+
+                 }
+
+
 
             }
         });
@@ -89,11 +109,24 @@ public static int loop;
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getActivity() , Transport_Message_Activity.class);
-                startActivity(intent);
+
+                if ((editFrom.getText().toString().isEmpty()) || (editTo.getText().toString().isEmpty())) {
+
+                    //Toast.makeText(getActivity() , "Please Enter Numbers" , Toast.LENGTH_SHORT).show();
+
+                    editFrom.setError("Enter fields");
+
+                }else {
+
+                    Intent intent = new Intent(getActivity() , Transport_Message_Activity.class);
+                    startActivity(intent);
+
+                }
 
 
-          //   getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content , new MS_SORT()).commit();
+
+
+//             getActivity().getSupportFragmentManager().beginTransaction().add(android.R.id.content , new MS_SORT()).commit();
 
             }
         });

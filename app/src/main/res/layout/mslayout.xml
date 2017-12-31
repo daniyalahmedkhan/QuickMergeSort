@@ -2,25 +2,29 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@mipmap/filter_bg"
     android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_gravity="center">
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Next"
+                android:background="@drawable/btnround2"
+                android:textColor="#fff"
+                android:textSize="15dp"
                 android:id="@+id/NEXXT"
                 />
 
@@ -28,7 +32,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="END"
-                android:layout_marginLeft="50dp"
+                android:background="@drawable/btnround2"
+                android:textSize="15dp"
+                android:textColor="#fff"
+                android:layout_marginLeft="10dp"
                 android:id="@+id/END"
                 />
         </LinearLayout>

@@ -2,6 +2,7 @@ package com.example.kashif.qmsort;
 
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -12,8 +13,10 @@ import java.util.ArrayList;
 public class sort implements Runnable {
 
     int arr[];
-    int low;
-    int high;
+   public static int low;
+   public static int high;
+
+   public static int counter;
 
     public sort(int arr[], int low, int high) {
         this.arr = arr;
@@ -32,13 +35,20 @@ public class sort implements Runnable {
         {
             /* pi is partitioning index, arr[pi] is
               now at right place */
-            QSActivity.glob=0;
+            QS_SORT.glob=0;
+
             int pi = partition(arr, low, high);
 
             // Recursively sort elements before
             // partition and after partition
             DoSort(arr, low, pi-1);
             DoSort(arr, pi+1, high);
+
+            QS_SORT.counter++;
+
+           // ++counter;
+//            QS_SORT.counter++;
+//
         }
     }
 
@@ -61,7 +71,7 @@ public class sort implements Runnable {
         int temp = arr[i+1];
         arr[i+1] = arr[high];
         arr[high] = temp;
-        while (( QSActivity.glob==0) && (QSActivity.endPress==false))
+        while (( QS_SORT.glob==0) && (QS_SORT.endPress==false))
         {
         }
         return i+1;

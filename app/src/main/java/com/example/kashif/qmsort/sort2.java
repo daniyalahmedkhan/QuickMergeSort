@@ -105,9 +105,8 @@ public class sort2 implements Runnable {
         }
 
 
-        while(MS_SORT.glob == 0){
-
-
+        while (( MS_SORT.glob==0) && (MS_SORT.endPress==false))
+        {
         }
 
 
